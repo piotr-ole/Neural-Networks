@@ -1,0 +1,125 @@
+MODEL: LeNetModel
+
+LeNetModel(
+  (unit1): ConvUnitModule(
+    (conv): Conv2d(3, 6, kernel_size=(5, 5), stride=(1, 1))
+    (relu): ReLU()
+    (maxpool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (unit2): ConvUnitModule(
+    (conv): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
+    (relu): ReLU()
+    (maxpool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (unit3): FcUnitModule(
+    (linear): Linear(in_features=400, out_features=120, bias=True)
+    (relu): ReLU()
+  )
+  (unit4): FcUnitModule(
+    (linear): Linear(in_features=120, out_features=84, bias=True)
+    (relu): ReLU()
+  )
+  (unit5): Linear(in_features=84, out_features=10, bias=True)
+  (conv_network): Sequential(
+    (0): ConvUnitModule(
+      (conv): Conv2d(3, 6, kernel_size=(5, 5), stride=(1, 1))
+      (relu): ReLU()
+      (maxpool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    )
+    (1): ConvUnitModule(
+      (conv): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
+      (relu): ReLU()
+      (maxpool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    )
+  )
+  (fc_network): Sequential(
+    (0): FcUnitModule(
+      (linear): Linear(in_features=400, out_features=120, bias=True)
+      (relu): ReLU()
+    )
+    (1): FcUnitModule(
+      (linear): Linear(in_features=120, out_features=84, bias=True)
+      (relu): ReLU()
+    )
+  )
+)
+
+MODEL PARAMETERS:
+
+Starting learning rate: 0.001
+Regularization l2 weight: 0
+Batch size: 100
+Optimizer Adam
+
+TRAIN SET TRANSFORMATIONS:
+
+Compose(
+    RandomCrop(size=(32, 32), padding=None)
+    RandomHorizontalFlip(p=0.5)
+    RandomRotation(degrees=(-15, 15), resample=False, expand=False)
+    ColorJitter(brightness=[0.8, 1.2], contrast=[0.8, 1.2], saturation=[0.8, 1.2], hue=None)
+    ToTensor()
+    Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
+)
+
+TEST SET TRANSFORMATIONS:
+
+Compose(
+    ToTensor()
+    Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
+)
+
+TRAINING PROCESS:
+
+Epoch 1/60 loss on test: 1.51995, acc on test: 0.4447, loss on train: 1.55356, acc on train: 0.4353, model saved.
+Epoch 2/60 loss on test: 1.40517, acc on test: 0.4896, loss on train: 1.44055, acc on train: 0.4804, model saved.
+Epoch 3/60 loss on test: 1.30276, acc on test: 0.5293, loss on train: 1.33489, acc on train: 0.5244, model saved.
+Epoch 4/60 loss on test: 1.24485, acc on test: 0.5563, loss on train: 1.27446, acc on train: 0.5466, model saved.
+Epoch 5/60 loss on test: 1.21297, acc on test: 0.5662, loss on train: 1.22965, acc on train: 0.5650, model saved.
+Epoch 6/60 loss on test: 1.15696, acc on test: 0.5934, loss on train: 1.17626, acc on train: 0.5852, model saved.
+Epoch 7/60 loss on test: 1.14881, acc on test: 0.5953, loss on train: 1.15195, acc on train: 0.5909, model saved.
+Epoch 8/60 loss on test: 1.13288, acc on test: 0.5988, loss on train: 1.13864, acc on train: 0.5961, model saved.
+Epoch 9/60 loss on test: 1.08309, acc on test: 0.6177, loss on train: 1.08842, acc on train: 0.6146, model saved.
+Epoch 10/60 loss on test: 1.07731, acc on test: 0.6206, loss on train: 1.05968, acc on train: 0.6271, model saved.
+Epoch 11/60 loss on test: 1.04480, acc on test: 0.6275, loss on train: 1.04276, acc on train: 0.6324, model saved.
+Epoch 12/60 loss on test: 1.03833, acc on test: 0.6379, loss on train: 1.02651, acc on train: 0.6380, model saved.
+Epoch 13/60 loss on test: 1.04999, acc on test: 0.6280, loss on train: 1.02867, acc on train: 0.6370
+Epoch 14/60 loss on test: 1.02843, acc on test: 0.6366, loss on train: 1.01256, acc on train: 0.6423, model saved.
+Epoch 15/60 loss on test: 1.00650, acc on test: 0.6473, loss on train: 0.97049, acc on train: 0.6592, model saved.
+Epoch 16/60 loss on test: 0.99816, acc on test: 0.6441, loss on train: 0.97009, acc on train: 0.6565, model saved.
+Epoch 17/60 loss on test: 1.00493, acc on test: 0.6491, loss on train: 0.96592, acc on train: 0.6609
+Model after epoch 16 loaded, now training with learning rate = 0.0003333333333333333
+Epoch 17/60 loss on test: 0.97124, acc on test: 0.6582, loss on train: 0.92832, acc on train: 0.6724, model saved.
+Epoch 18/60 loss on test: 0.97491, acc on test: 0.6577, loss on train: 0.92858, acc on train: 0.6720
+Epoch 19/60 loss on test: 0.95724, acc on test: 0.6648, loss on train: 0.91545, acc on train: 0.6772, model saved.
+Epoch 20/60 loss on test: 0.97680, acc on test: 0.6599, loss on train: 0.92350, acc on train: 0.6752
+Epoch 21/60 loss on test: 0.95546, acc on test: 0.6700, loss on train: 0.90296, acc on train: 0.6840, model saved.
+Epoch 22/60 loss on test: 0.95336, acc on test: 0.6673, loss on train: 0.89653, acc on train: 0.6836, model saved.
+Epoch 23/60 loss on test: 0.94410, acc on test: 0.6694, loss on train: 0.89198, acc on train: 0.6856, model saved.
+Epoch 24/60 loss on test: 0.95829, acc on test: 0.6677, loss on train: 0.89696, acc on train: 0.6876
+Epoch 25/60 loss on test: 0.94343, acc on test: 0.6711, loss on train: 0.88159, acc on train: 0.6921, model saved.
+Epoch 26/60 loss on test: 0.95824, acc on test: 0.6650, loss on train: 0.89676, acc on train: 0.6846
+Model after epoch 25 loaded, now training with learning rate = 0.0001111111111111111
+Epoch 26/60 loss on test: 0.93742, acc on test: 0.6744, loss on train: 0.87349, acc on train: 0.6929, model saved.
+Epoch 27/60 loss on test: 0.93741, acc on test: 0.6742, loss on train: 0.86885, acc on train: 0.6933, model saved.
+Epoch 28/60 loss on test: 0.93775, acc on test: 0.6735, loss on train: 0.86944, acc on train: 0.6942
+Epoch 29/60 loss on test: 0.93538, acc on test: 0.6754, loss on train: 0.86861, acc on train: 0.6927, model saved.
+Epoch 30/60 loss on test: 0.93530, acc on test: 0.6735, loss on train: 0.86290, acc on train: 0.6979, model saved.
+Epoch 31/60 loss on test: 0.93981, acc on test: 0.6717, loss on train: 0.86684, acc on train: 0.6959
+Model after epoch 30 loaded, now training with learning rate = 3.7037037037037037e-05
+Epoch 31/60 loss on test: 0.93274, acc on test: 0.6757, loss on train: 0.85756, acc on train: 0.6988, model saved.
+Epoch 32/60 loss on test: 0.93225, acc on test: 0.6732, loss on train: 0.85898, acc on train: 0.6980, model saved.
+Epoch 33/60 loss on test: 0.93203, acc on test: 0.6754, loss on train: 0.85821, acc on train: 0.6991, model saved.
+Epoch 34/60 loss on test: 0.93496, acc on test: 0.6737, loss on train: 0.86005, acc on train: 0.6986
+Model after epoch 33 loaded, now training with learning rate = 1.2345679012345678e-05
+Epoch 34/60 loss on test: 0.93177, acc on test: 0.6751, loss on train: 0.85679, acc on train: 0.6968, model saved.
+Epoch 35/60 loss on test: 0.93196, acc on test: 0.6744, loss on train: 0.85882, acc on train: 0.6966
+Epoch 36/60 loss on test: 0.93138, acc on test: 0.6748, loss on train: 0.85431, acc on train: 0.6991, model saved.
+Epoch 37/60 loss on test: 0.93070, acc on test: 0.6743, loss on train: 0.85539, acc on train: 0.6998, model saved.
+Epoch 38/60 loss on test: 0.93122, acc on test: 0.6750, loss on train: 0.85654, acc on train: 0.6997
+Model after epoch 37 loaded, now training with learning rate = 4.115226337448559e-06
+Epoch 38/60 loss on test: 0.93070, acc on test: 0.6754, loss on train: 0.85487, acc on train: 0.6996, model saved.
+Epoch 39/60 loss on test: 0.93115, acc on test: 0.6753, loss on train: 0.86018, acc on train: 0.6985
+Model after epoch 38 loaded, now training with learning rate = 1.371742112482853e-06
+Epoch 39/60 loss on test: 0.93074, acc on test: 0.6751, loss on train: 0.85522, acc on train: 0.6999
+Training ended.
